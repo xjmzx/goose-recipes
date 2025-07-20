@@ -1,6 +1,9 @@
 version: "1.0.0"
+
 title: Trip planner
+
 description: Plan your next trip
+
 instructions: "Follow these steps with {{ required_param }} and {{ optional_param }}"
 
 prompt: |
@@ -31,3 +34,7 @@ extensions:
     display_name: Developer
     timeout: 300
     bundled: true
+
+required:
+      - destination
+      - duration
