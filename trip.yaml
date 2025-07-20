@@ -7,3 +7,12 @@ prompt: |
   - activities to do
   - local cuisine to try
   - a rough budget estimate
+parameters:
+  - key: destination
+    input_type: string
+    requirement: required
+    description: Destination for the trip. Should be a large region with multiple climates.
+  - key: duration
+    input_type: number
+    requirement: required
+    description: Number of days for the trip.
