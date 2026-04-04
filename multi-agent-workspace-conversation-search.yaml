@@ -1,0 +1,11 @@
+version: 1.0.0
+title: Multi-Agent Workspace & Conversation Search
+description: A recipe for setting up and searching across multiple AI agent workspaces (Goose, Claude, Gemini, Openclaw, Maple, Ollama) to find conversation history and manage projects.
+instructions: 'When searching for conversation history across multiple AI agents, first identify the tool''s config directories: (~/.config, ~/.local/state, ~/.local/share ~/.config/goose Application Data: ~/Library/Application Support/Goose on macOS) or (~/.goose/ on Linux) Grep ~ for Goose, Claude, Gemini, Openclaw, Maple, Ollama, keywords of project names, services, domains or file paths. Parse LLM request/response JSONL logs to extract conversation context (if necessary.) Check session counts.'
+activities:
+- Find AI agent conversations
+- Search Proton Drive references
+- Check workspace configurations
+- Map multi-agent installations
+- Retrieve project session history
+parameters: []
