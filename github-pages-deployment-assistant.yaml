@@ -1,0 +1,11 @@
+version: 1.0.0
+title: GitHub Pages Deployment Assistant
+description: A recipe for deploying projects to GitHub Pages using GitHub Actions workflows.
+instructions: 'Using provided GitHub Actions workflow YAML files (like glimpse-deploy.yml and sonic-deploy.yml), we identify the deployment configuration and push it to the repository''s .github/workflows/ directory. When code is pushed to the main branch, GitHub Actions automatically builds the project (npm install, npm run build) and deploys the dist folder to GitHub Pages. The base path in vite.config.ts must be configured for subdirectory deployment (e.g., base: ''/REPO-NAME/''). We verify deployment status by checking the GitHub Pages URL in a browser.'
+activities:
+- Deploy to GitHub Pages
+- Check GitHub Pages status
+- Configure vite base path
+- Create GitHub Actions workflow
+- Verify deployment URL
+parameters: []

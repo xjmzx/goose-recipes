@@ -1,0 +1,30 @@
+version: 1.0.0
+title: SSH Key Auth (GitHub) | Fix Auth Issues
+description: A recipe for testing, configuring and fixing SSH Authentication for Github
+instructions: |
+  When testing SSH keys for GitHub, always use the format `ssh -T git@github.com` 
+  
+  To test a specific key, use `ssh -i /path/to/key -T git@github.com`. 
+  
+  If authentication fails, verify the key is uploaded as an SSH key (not authentication key) at github.com/settings/keys. For multiple keys, create a ~/.ssh/config file with Host aliases to automatically select the correct key per repository.
+  
+  SSH Key Inventory
+  
+  List all keys in ~/.ssh/ - found 20+ keys including your GitHub-specific ones
+  Identify hardware security keys (sk*)
+  2. SSH Config Review
+  Check ~/.ssh/config
+  
+  ssh-add -l  # List all loaded keys
+  Find keys loaded in GNOME keyring at /run/user/1000/keyring/ssh
+  Confirmed all 3 GitHub-specific keys (adjmx, macos-node, xjmzx) are already loaded
+  Check ~/.bashrc and ~/.zshrc for ssh-add entries
+  Find gnome-keyring-daemon running - handles auto-unlock
+  Add keychain setup to ~/.zshrc (if necessary) unnecessary if GNOME keyring works)
+  
+activities:
+- Test SSH key connection
+- Configure SSH config for multiple keys
+- Verify key registered with GitHub
+- Fix SSH authentication issues
+parameters: []

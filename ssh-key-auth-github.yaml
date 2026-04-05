@@ -1,0 +1,10 @@
+version: 1.0.0
+title: SSH Key Auth (GitHub)
+description: A recipe for testing and configuring SSH keys for GitHub authentication, including troubleshooting connection issues.
+instructions: When testing SSH keys for GitHub, always use the format `ssh -T git@github.com` (the username is always 'git', not your GitHub username). To test a specific key, use `ssh -i /path/to/key -T git@github.com`. If authentication fails, verify the key is uploaded as an SSH key (not authentication key) at github.com/settings/keys. For multiple keys, create a ~/.ssh/config file with Host aliases to automatically select the correct key per repository.
+activities:
+- Test SSH key connection
+- Configure SSH config for multiple keys
+- Verify key registered with GitHub
+- Fix SSH authentication issues
+parameters: []

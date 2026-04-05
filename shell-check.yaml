@@ -1,0 +1,8 @@
+version: 1.0.0
+title: Shell Check
+description: This recipe checks the current shell
+instructions: |-
+  - Check current shell
+  - Report current shell
+activities: []
+parameters: []
