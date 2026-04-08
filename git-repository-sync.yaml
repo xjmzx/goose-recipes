@@ -1,0 +1,11 @@
+version: 1.0.0
+title: Git Repository Sync
+description: A recipe for syncing a local git repository with a remote server, checking for differences and pushing changes.
+instructions: Check the remote configuration and current branch status using 'git remote -v' and 'git status'. Compare local and remote branches with 'git log' to identify any divergent commits. If the remote has additional commits, pull them first with 'git pull --rebase', then push local changes with 'git push'. Untracked files can be added with 'git add' before pushing.
+activities:
+- Check git remote
+- View branch status
+- Compare local/remote commits
+- Pull remote changes
+- Push to remote
+parameters: []
