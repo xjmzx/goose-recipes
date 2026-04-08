@@ -1,0 +1,11 @@
+version: 1.0.0
+title: Git Repo Sync macOS
+description: A recipe for synchronizing a local Git repository with its remote counterpart, handling any differences between them.
+instructions: Check the current state of the repository using git status, git remote -v, and git branch -a to understand the remote configuration and branch structure. Identify any differences between local and remote branches, such as commits that exist remotely but not locally. When the local branch is behind the remote, use git pull to fetch and merge the remote changes into the local branch. This ensures the local repository matches the remote.
+activities:
+- Sync local git repo with remote
+- Pull remote changes
+- Check git status and branches
+- Resolve git sync conflicts
+- Update local branch to match remote
+parameters: []

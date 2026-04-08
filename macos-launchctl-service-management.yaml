@@ -1,0 +1,11 @@
+version: 1.0.0
+title: macOS Launchctl Service Management
+description: A recipe for checking and managing macOS background service startup configuration via launchctl.
+instructions: 'Use `launchctl list | grep <service>` to check if a service is currently running, and `ls ~/Library/LaunchAgents/` to find available plist files. To manage startup behavior, use `launchctl disable user/$(id -u)/<service>` to prevent a service from starting automatically on login, or `launchctl enable user/$(id -u)/<service>` to allow it. Verify changes by running `launchctl print user/$(id -u)/` and grepping for the service, which will show ''enabled'' or ''disabled'' next to the service name. Note: Some operations may require elevated privileges.'
+activities:
+- Check if service is running
+- Disable auto-startup for service
+- List all launch agents
+- Enable service auto-startup
+- Unload launch service
+parameters: []

@@ -1,0 +1,11 @@
+version: 1.0.0
+title: MacOS Multi Git Repo Watcher with Notifications
+description: A recipe for setting up a lightweight file watcher that monitors a local Git repository and sends macOS notifications when new commits are detected.
+instructions: Create a shell script that periodically checks the git commit hash of a local repository and compares it against a stored reference. When the commit changes (indicating new commits from pull or push), use osascript to display a macOS notification. Register the script as a LaunchAgent using launchctl to run at specified intervals. The watcher persists across reboots and runs silently in the background.
+activities:
+- Notify on new commits
+- Auto-sync git repos
+- Monitor local repository changes
+- Background file change alerts
+- MacOS notification scripts
+parameters: []
