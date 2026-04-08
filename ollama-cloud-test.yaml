@@ -1,0 +1,28 @@
+version: "1.0.0"
+
+title: Ollama Cloud Model Test
+
+description: Test an Ollama cloud model (kimi-k2.5:cloud, minimax-m2:cloud, etc.)
+
+instructions: |-
+  Run a test with the selected cloud model to verify it responds correctly.
+  
+  Steps:
+  1. Use the model parameter to determine which model to test
+  2. Run `ollama run {{ model }}` with a test prompt
+  3. Report the response
+  
+  The available cloud models are:
+  - kimi-k2.5:cloud
+  - minimax-m2:cloud  
+  - minimax-m2.5:cloud
+  - minimax-m2.7:cloud
+
+parameters:
+  - key: model
+    input_type: string
+    requirement: required
+    description: Cloud model to test (e.g., kimi-k2.5:cloud)
+    default: kimi-k2.5:cloud
+
+activities: []
