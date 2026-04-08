@@ -1,0 +1,11 @@
+version: 1.0.0
+title: Goose Recipes Sync
+description: Synchronizing local goose-recipes YAML files with remote, pushing new recipes and pulling missing ones.
+instructions: First, list all local YAML files in ~/code/goose-recipes to see what's available locally. Then load available remote sources to compare local vs remote. Identify which local files are not yet registered as remote sources (these need pushing) and which remote sources are missing locally (these need pulling). Use git commands to push new local recipes to remote and pull missing remote recipes. Finally verify the branch is synchronized with origin/main.
+activities:
+- List local recipe files
+- Compare local vs remote sources
+- Push new recipes to remote
+- Pull missing recipes locally
+- Sync branch with origin
+parameters: []
