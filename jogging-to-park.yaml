@@ -1,0 +1,22 @@
+version: 1.0.0
+title: jogging_to_park
+description: Weekly jogging schedule - creates Google Calendar event for Wed/Sat 5pm
+instructions: |
+  Run the jogging calendar script to create a Google Calendar event for the next scheduled run.
+  
+  schedule:
+    cron: "0 17 * * 3,6"  # Wednesday and Saturday at 5pm
+    timezone: "America/New_York"
+  
+  tasks:
+    - name: create_jogging_event
+      description: Create jogging calendar event
+      steps:
+        - action: shell
+          command: cd ~/.scripts && node jogging-gcal.js
+        
+        - action: notify
+          message: "🏃 Jogging event created in Google Calendar!"
+  
+activities: []
+parameters: []

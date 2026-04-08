@@ -1,0 +1,11 @@
+version: 1.0.0
+title: Cron Job Google Calendar Notifications
+description: A recipe for setting up scheduled notifications that create Google Calendar events using cron and a service account.
+instructions: Use cron to schedule jobs at specific times (e.g., 0 17 * * 3,6 for Wed/Sat at 5pm). Create a Google Cloud project with Calendar API enabled, then set up a service account for server-to-server authentication. Share your primary calendar with the service account email (with 'Make changes to events' permission). Write a Node.js script that uses the googleapis library to authenticate with the service account and create calendar events dynamically. Finally, set up a shell wrapper script to run the Node.js script from cron.
+activities:
+- Schedule weekly exercise reminders
+- Cron-triggered calendar events
+- Service account calendar automation
+- Set up recurring notifications
+- Google Calendar API cron jobs
+parameters: []
