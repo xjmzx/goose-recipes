@@ -1,0 +1,11 @@
+version: 1.0.0
+title: Linux Systemd User Service Management
+description: A recipe for managing and controlling systemd user services on Linux systems.
+instructions: Use systemctl --user commands to manage systemd user services. Common operations include checking status with 'systemctl --user status <service>', stopping with 'systemctl --user stop <service>', starting with 'systemctl --user start <service>', and restarting with 'systemctl --user restart <service>'. View real-time logs using 'journalctl --user -u <service> -f'. Identify running services by checking process info with ps aux or pgrep.
+activities:
+- Check service status
+- Stop running service
+- Start stopped service
+- Restart service
+- View service logs
+parameters: []
