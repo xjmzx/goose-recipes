@@ -1,0 +1,11 @@
+version: 1.0.0
+title: H.264 Video Glitching via Chunk Swapping
+description: A recipe for creating visual glitch artifacts in compressed video files by manipulating the encoded bitstream.
+instructions: Using Python byte-level operations, swap random chunks within the compressed H.264 video stream. Corrupt the encoded data by exchanging portions of the bitstream (typically 150-200 swaps of 1KB-10KB chunks in the middle 50% of the file). Then re-encode the result using ffmpeg with error tolerance enabled (-err_detect ignore_err) to create a playable output with visible artifacts. The glitch intensity increases over the video duration as decoding errors compound.
+activities:
+- corrupt video bytes
+- swap video chunks
+- glitch compressed video
+- create visual artifacts
+- manipulate H.264 stream
+parameters: []

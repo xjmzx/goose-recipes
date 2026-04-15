@@ -1,0 +1,31 @@
+title: hackernews-brief
+description: Fetch top stories from HackerNews
+version: "1.0"
+
+steps:
+  - name: Fetch HackerNews
+    shell: |
+      #!/bin/bash
+      echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+      echo " HACKER NEWS - $(date '+%H:%M %Z')"
+      echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+
+      NEWS_XML=$(curl -s -m 10 "https://news.ycombinator.com/rss" 2>/dev/null)
+
+      if [ $? -eq 0 ] && [ -n "$NEWS_XML" ]; then
+          echo "$NEWS_XML" | grep -oP '<item>.*?</item>' | head -5 | while IFS= read -r item; do
+              TITLE=$(echo "$item" | grep -oP '<title>\K[^<]+' | head -1)
+              LINK=$(echo "$item" | grep -oP '<link>\K[^<]+' | head -1)
+
+              if [ -n "$TITLE" ]; then
+                  echo ""
+                  echo "📌 $TITLE"
+                  [ -n "$LINK" ] && echo "   $LINK"
+              fi
+          done
+      else
+          echo "⚠️  Unable to fetch HackerNews"
+      fi
+
+      echo ""
+      echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"

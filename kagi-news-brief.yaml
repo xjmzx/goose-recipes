@@ -1,0 +1,63 @@
+title: kagi-news-brief
+description: Fetch news from Kagi RSS feeds (Tech, Privacy, Cybersecurity)
+version: "1.0"
+
+parameters:
+  topics:
+    type: array
+    description: News topics to fetch
+    default: ["tech", "privacy", "cybersecurity"]
+
+steps:
+  - name: Fetch Kagi News
+    shell: |
+      #!/bin/bash
+      echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+      echo " KAGI NEWS - $(date '+%H:%M %Z')"
+      echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+
+      # Define topics
+      declare -A TOPICS=(
+          ["tech"]="https://news.kagi.com/tech.xml"
+          ["science"]="https://news.kagi.com/science.xml"
+          ["linux_oss"]="https://news.kagi.com/linux_oss.xml"
+          ["cybersecurity"]="https://news.kagi.com/cybersecurity.xml"
+          ["privacy"]="https://news.kagi.com/privacy.xml"
+      )
+
+      # Icons for each topic
+      declare -A ICONS=(
+          ["tech"]="💻"
+          ["science"]="🔬"
+          ["linux_oss"]="🐧"
+          ["cybersecurity"]="🔐"
+          ["privacy"]="🕵️"
+      )
+
+      # Fetch news for each topic
+      for topic in tech privacy cybersecurity; do
+          echo ""
+          echo "${ICONS[$topic]} ${topic^^} NEWS"
+          echo "─────────────────────────────────────────"
+
+          NEWS_XML=$(curl -s -m 10 "${TOPICS[$topic]}" 2>/dev/null)
+
+          if [ $? -eq 0 ] && [ -n "$NEWS_XML" ]; then
+              echo "$NEWS_XML" | grep -oP '<item>.*?</item>' | head -3 | while IFS= read -r item; do
+                  TITLE=$(echo "$item" | grep -oP '<title>\K[^<]+' | head -1)
+                  LINK=$(echo "$item" | grep -oP '<link>\K[^<]+' | head -1)
+                  PUBDATE=$(echo "$item" | grep -oP '<pubDate>\K[^<]+' | head -1)
+
+                  if [ -n "$TITLE" ]; then
+                      echo "  📌 $TITLE"
+                      [ -n "$LINK" ] && echo "     $LINK"
+                      echo ""
+                  fi
+              done
+          else
+              echo "  ⚠️  Unable to fetch $topic news"
+              echo ""
+          fi
+      done
+
+      echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
