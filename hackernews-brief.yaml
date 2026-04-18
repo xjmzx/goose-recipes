@@ -1,16 +1,16 @@
-title: hackernews-brief
-description: Fetch top stories from HackerNews
+title: stackernews-brief
+description: Fetch top stories from StakerNews
 version: "1.0"
 
 steps:
-  - name: Fetch HackerNews
+  - name: Fetch StackerNews
     shell: |
       #!/bin/bash
       echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-      echo " HACKER NEWS - $(date '+%H:%M %Z')"
+      echo " STACKER NEWS - $(date '+%H:%M %Z')"
       echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 
-      NEWS_XML=$(curl -s -m 10 "https://news.ycombinator.com/rss" 2>/dev/null)
+      NEWS_XML=$(curl -s -m 10 "https://stacker.news/rss" 2>/dev/null)
 
       if [ $? -eq 0 ] && [ -n "$NEWS_XML" ]; then
           echo "$NEWS_XML" | grep -oP '<item>.*?</item>' | head -5 | while IFS= read -r item; do
@@ -24,7 +24,7 @@ steps:
               fi
           done
       else
-          echo "⚠️  Unable to fetch HackerNews"
+          echo "⚠️  Unable to fetch StackerNews"
       fi
 
       echo ""
